@@ -9,6 +9,9 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
+# ZSH Completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -142,13 +145,16 @@ alias cdui='cd modules/presentation/web/app/src/main/angular/'
 alias undeploy='mvn clean install -DskipTests -Pwls-undeploy-all -o -rf :wls-full-deploy'
 alias redeploy='mvn clean install -DskipTests -Pwls-deploy -o -rf :wls-full-deploy'
 alias rebuild='mvn clean install -o -DdevMode -DskipTests -P\!with-web'
+alias rebuild-no-clean='mvn install -o -DdevMode -DskipTests -P\!with-web'
 alias rebuild-web='mvn clean install -o -DdevMode -DskipTests '
+alias rebuild-web-online='mvn clean install -DdevMode -DskipTests'
 alias deploy-fresh='mvn clean install -DdevMode -DskipTests -Pwls-deploy -P\!with-web -o'
 alias deploy-fresh-with-web='mvn clean install -DdevMode -DskipTests -Pwls-deploy -o'
+alias deploy-fresh-with-web-online='mvn clean install -DdevMode -DskipTest -Pwls-deploy'
 alias gen-cxf='mvn clean install -Pcxf -DskipTests'
-
+alias gen-cxf-no-clean='mvn install -Pcxf -DskipTests'
 # Git Aliases
-alias sb='git branch | fzf-tmux -d 15 | xargs git switch'
+alias sb='git fetch --all && git branch -a | fzf-tmux -d 15 | awk -F"/" '\''{print $NF}'\'' | xargs git switch'
 
 # Yarn
 export PATH="$PATH:$HOME/.yarn/bin"
@@ -164,8 +170,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # HEX Functions
-hex-encode(){
-  echo "$1" | xxd -p | rev | cut -c3- | rev
+#hex-encode(){
+#  echo "$1" | xxd -p | rev | cut -c3- | rev
+#}
+
+hex-encode() {
+  echo "$1" | xxd -a -c 1 | tr -d '\n'
 }
 
 hex-decode() {
