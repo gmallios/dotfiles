@@ -146,15 +146,16 @@ alias undeploy='mvn clean install -DskipTests -Pwls-undeploy-all -o -rf :wls-ful
 alias redeploy='mvn clean install -DskipTests -Pwls-deploy -o -rf :wls-full-deploy'
 alias rebuild='mvn clean install -o -DdevMode -DskipTests -P\!with-web'
 alias rebuild-no-clean='mvn install -o -DdevMode -DskipTests -P\!with-web'
-alias rebuild-web='mvn clean install -o -DdevMode -DskipTests '
-alias rebuild-web-online='mvn clean install -DdevMode -DskipTests'
+alias rebuild-web='mvn clean install -o -DdevMode -DskipTests -DskipNpm'
+alias rebuild-web-online='mvn clean install -DdevMode -DskipTests -DskipNpm'
 alias deploy-fresh='mvn clean install -DdevMode -DskipTests -Pwls-deploy -P\!with-web -o'
-alias deploy-fresh-with-web='mvn clean install -DdevMode -DskipTests -Pwls-deploy -o'
-alias deploy-fresh-with-web-online='mvn clean install -DdevMode -DskipTest -Pwls-deploy'
+alias deploy-fresh-with-web='mvn clean install -DdevMode -DskipNpm -DskipTests -Pwls-deploy -o'
+alias deploy-fresh-with-web-online='mvn clean install -DdevMode -DskipNpm -DskipTest -Pwls-deploy'
 alias gen-cxf='mvn clean install -Pcxf -DskipTests'
 alias gen-cxf-no-clean='mvn install -Pcxf -DskipTests'
 # Git Aliases
 alias sb='git fetch --all && git branch -a | fzf-tmux -d 15 | awk -F"/" '\''{print $NF}'\'' | xargs git switch'
+alias cb='git fetch --all && git branch -a | fzf-tmux -d 15 | awk -F"/" '\''{print $NF}'\'' | xargs git checkout -b'
 
 # Yarn
 export PATH="$PATH:$HOME/.yarn/bin"
