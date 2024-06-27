@@ -171,21 +171,14 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # HEX Functions
-#hex-encode(){
-#  echo "$1" | xxd -p | rev | cut -c3- | rev
-#}
-
-hex-encode() {
-  echo "$1" | xxd -a -c 1 | tr -d '\n'
+hex-encode(){
+  echo "$1" | xxd -p | rev | cut -c3- | rev
 }
 
-hex-decode() {
-    echo "$1" | xxd -r -p
+hex-decode(){
+  echo "$1" | rev | sed 's/^/00/' | rev | xxd -r -p
 }
 
-# kafka docker playground
-#export PATH=/home/gmallios/kafka-docker-playground/scripts/cli:$PATH
-#source /home/gmallios/kafka-docker-playground/scripts/cli/completions.bash
 
 # Zoxide
 eval "$(zoxide init zsh)"
@@ -193,3 +186,7 @@ alias cd="z"
 alias cdi="zi"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# Neovim
+export PATH="$PATH:/opt/nvim-linux64/bin"
