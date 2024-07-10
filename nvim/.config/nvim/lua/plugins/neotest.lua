@@ -57,6 +57,7 @@ return {
           require "neotest-jest" {
             -- Add any specific configuration for Jest here
           },
+          require "rustaceanvim.neotest" {},
         },
       }))
     end,
