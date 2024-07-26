@@ -12,4 +12,6 @@ return {
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.recipes.telescope-lsp-mappings" },
+  { import = "astrocommunity.diagnostics.trouble-nvim" },
 }

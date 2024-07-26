@@ -143,6 +143,7 @@ alias idea='~/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-editio
 #Aliases
 alias cdui='cd modules/presentation/web/app/src/main/angular/'
 alias undeploy='mvn clean install -DskipTests -Pwls-undeploy-all -o -rf :wls-full-deploy'
+alias undeploy-online='mvn clean install -DskipTests -Pwls-undeploy-all -rf :wls-full-deploy'
 alias redeploy='mvn clean install -DskipTests -Pwls-deploy -o -rf :wls-full-deploy'
 alias rebuild='mvn clean install -o -DdevMode -DskipTests -P\!with-web'
 alias rebuild-no-clean='mvn install -o -DdevMode -DskipTests -P\!with-web'
