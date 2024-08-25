@@ -18,7 +18,7 @@ alias reload-zsh="source ~/.zshrc"
 # Starship
 eval "$(starship init zsh)"
 
-# fnm
+# Fnm
 FNM_PATH="/home/gmallios/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/gmallios/.local/share/fnm:$PATH"
