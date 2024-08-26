@@ -134,8 +134,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #XServer
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-export LIBGL_ALWAYS_INDIRECT=1
+# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+# export LIBGL_ALWAYS_INDIRECT=1
+# WSLg
+export DISPLAY=:0
 
 # IDEA
 alias idea='~/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-edition/bin/idea.sh'
@@ -191,3 +193,4 @@ alias cdi="zi"
 
 # Neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
