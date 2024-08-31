@@ -1,3 +1,8 @@
+# Amazon Q pre block on macOS
+if [[ "$(uname)" == "Darwin" ]]; then
+  [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+fi
+
 # Neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
@@ -46,3 +51,8 @@ bindkey '^H' backward-kill-word
 bindkey "\e[3;6~" kill-line
 # urxvt
 bindkey "\e[3@" kill-line
+
+# Amazon Q post 
+if [[ "$(uname)" == "Darwin" ]]; then
+  [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+fi
