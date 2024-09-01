@@ -21,6 +21,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.java" },
     { import = "lazyvim.plugins.extras.lang.angular" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
+    { import = "lazyvim.plugins.extas.lang.rust" },
     -- import/override with your plugins
     { import = "plugins" },
   },
