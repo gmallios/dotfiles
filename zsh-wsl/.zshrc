@@ -1,5 +1,7 @@
+OS="$(uname -s)"
+
 # Amazon Q pre block on macOS
-if [[ "$(uname)" == "Darwin" ]]; then
+if [[ "$OS" == "Darwin" ]]; then
   [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 fi
 
@@ -24,12 +26,19 @@ alias reload-zsh="source ~/.zshrc"
 eval "$(starship init zsh)"
 
 # Fnm
-FNM_PATH="/home/gmallios/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/gmallios/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+# macOS setup
+if [ "$OS" = "Darwin" ]; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
+# Linux setup
+if [ "$OS" = "Linux" ]; then
+  FNM_PATH="$HOME/.local/share/fnm"
+  if [ -d "$FNM_PATH" ]; then
+    export PATH="$FNM_PATH:$PATH"
+    eval "`fnm env`"
+  fi
+fi
 
 # Fix CTRL+Arrow on WSL
 ### ctrl+arrows
@@ -53,6 +62,13 @@ bindkey "\e[3;6~" kill-line
 bindkey "\e[3@" kill-line
 
 # Amazon Q post 
-if [[ "$(uname)" == "Darwin" ]]; then
+if [[ "$OS" == "Darwin" ]]; then
   [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+fi
+
+# fnm
+FNM_PATH="/Users/gmallios/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/gmallios/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
 fi
