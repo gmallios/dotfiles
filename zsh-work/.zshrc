@@ -158,7 +158,7 @@ alias gen-cxf='mvn clean install -Pcxf -DskipTests'
 alias gen-cxf-no-clean='mvn install -Pcxf -DskipTests'
 # Git Aliases
 alias sb='git fetch --all && git branch -a | fzf-tmux -d 15 | awk -F"/" '\''{print $NF}'\'' | xargs git switch'
-alias cb='git fetch --all && git branch -a | fzf-tmux -d 15 | awk -F"/" '\''{print $NF}'\'' | xargs git checkout -b'
+alias cb='git fetch --all && git branch -a | fzf-tmux -d 15 | awk -F"/" '\''{print $NF}'\'' | xargs git checkout'
 
 # Yarn
 export PATH="$PATH:$HOME/.yarn/bin"
